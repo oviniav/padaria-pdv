@@ -57,7 +57,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setTitle("Padaria - Menu Principal");
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        lblTitulo.setText("PADARIA");
+        lblTitulo.setText("PADARIA DO JACÓ");
 
         lblBoasVindas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblBoasVindas.setText("Olá, Usuário");
@@ -85,7 +85,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblBoasVindas)
-                            .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblTitulo)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(116, 116, 116)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,9 +102,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(lblTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblBoasVindas)
-                .addGap(29, 29, 29)
+                .addGap(23, 23, 23)
                 .addComponent(btnVenda)
                 .addGap(18, 18, 18)
                 .addComponent(btnProdutos)

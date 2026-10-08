@@ -25,8 +25,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblBoasVindas.setText("Olá, " + funcionarioLogado.getNome() + " (" + funcionarioLogado.getCargo() + ")");
         setLocationRelativeTo(null);
         
-        btnProdutos.addActionListener(e
-                -> JOptionPane.showMessageDialog(this, "Tela de produtos em construção."));
+        btnProdutos.addActionListener(e -> new TelaProdutos().setVisible(true));
 
         btnFuncionarios.addActionListener(e
                 -> JOptionPane.showMessageDialog(this, "Tela de funcionários em construção."));
@@ -35,16 +34,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             dispose();
             new TelaLogin().setVisible(true);
         });
-        btnProdutos.addActionListener(e
-                -> JOptionPane.showMessageDialog(this, "Tela de produtos em construção."));
 
-        btnFuncionarios.addActionListener(e
-                -> JOptionPane.showMessageDialog(this, "Tela de funcionários em construção."));
-
-        btnSair.addActionListener(e -> {
-            dispose();
-            new TelaLogin().setVisible(true);
-        });
     }
 
     /**

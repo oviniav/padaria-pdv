@@ -136,7 +136,7 @@ try {
         txtSenha.requestFocus();
         return;
     }
-    JOptionPane.showMessageDialog(this, "Bem-Vindo(a), " + f.getNome() + "!");
+    new TelaPrincipal(f).setVisible(true);
     dispose();
 } catch (SQLException e) {
     JOptionPane.showMessageDialog(this, "Erro ao acessar o banco: \n" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);

@@ -1,0 +1,5 @@
+# Copie este arquivo para "db.properties" (mesma pasta) e ajuste a senha.
+# O db.properties NÃO vai para o GitHub (está no .gitignore).
+db.url=jdbc:postgresql://localhost:5432/padaria
+db.usuario=postgres
+db.senha=SUA_SENHA_AQUI

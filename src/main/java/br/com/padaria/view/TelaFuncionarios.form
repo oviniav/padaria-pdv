@@ -23,13 +23,173 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane1" alignment="0" min="-2" pref="470" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="btnNovo" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                                  <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="btnExcluir" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtCargo" linkSize="1" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                                      <Component id="txtNome" linkSize="1" min="-2" pref="248" max="-2" attributes="0"/>
+                                      <Component id="txtTelefone" linkSize="2" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="txtSenha" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txtUsuario" linkSize="2" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="70" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNome" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCargo" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnNovo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="135" max="-2" attributes="0"/>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="lblTitulo">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="24" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="CADASTRO DE FUNCIONARIOS"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nome: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtNome">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cargo: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtCargo">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Telefone: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtTelefone">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Usuario: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtUsuario">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Senha: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="txtSenha">
+    </Component>
+    <Component class="javax.swing.JButton" name="btnNovo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Novo"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSalvar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Salvar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnExcluir">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Excluir"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="tblFuncionarios">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="4" rowCount="4">
+                <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                <Column editable="true" title="Title 4" type="java.lang.Object"/>
+              </Table>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
 </Form>

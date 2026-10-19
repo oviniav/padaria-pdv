@@ -372,5 +372,5 @@ public class TelaProdutos extends javax.swing.JFrame {
     private javax.swing.JTextField txtEstoque;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtPreco;
-    // End of variables declaration                   
+                    
 }

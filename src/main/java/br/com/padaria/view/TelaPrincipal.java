@@ -119,7 +119,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaActionPerformed
-        JOptionPane.showMessageDialog(this, "Tela de venda em construçao");
+        new TelaVenda(funcionarioLogado).setVisible(true);
     }//GEN-LAST:event_btnVendaActionPerformed
 
     /**

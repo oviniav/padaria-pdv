@@ -1,10 +1,3 @@
--- =====================================================
---  PADARIA - Script de criação do banco (PostgreSQL)
--- =====================================================
--- 1) Conectado ao banco "postgres", crie o banco:
---      CREATE DATABASE padaria;
--- 2) Conecte-se ao banco "padaria" e execute o restante.
--- =====================================================
 
 DROP TABLE IF EXISTS item_venda;
 DROP TABLE IF EXISTS venda;
@@ -17,7 +10,7 @@ CREATE TABLE funcionario (
     cargo     VARCHAR(50)  NOT NULL,
     telefone  VARCHAR(20),
     usuario   VARCHAR(30)  NOT NULL UNIQUE,
-    senha     VARCHAR(64)  NOT NULL          -- hash SHA-256 (hex)
+    senha     VARCHAR(64)  NOT NULL          -- hash 
 );
 
 CREATE TABLE produto (
@@ -45,10 +38,12 @@ CREATE TABLE item_venda (
 );
 
 -- ---------------- Dados de teste ----------------
--- Login inicial: usuário "admin" / senha "admin123"
+
 INSERT INTO funcionario (nome, cargo, telefone, usuario, senha) VALUES
 ('Administrador', 'Gerente', '(16) 99999-0000', 'admin',
- encode(sha256('admin123'::bytea), 'hex'));
+ encode(sha256('admin123'::bytea), 'hex')),
+('Administrador', 'Gerente', '', 'adm',
+ encode(sha256('adm123'::bytea), 'hex'));
 
 INSERT INTO produto (nome, descricao, preco, unidade, estoque) VALUES
 ('Pão Francês',      'Pão de sal tradicional',     16.90, 'KG', 20.000),

@@ -44,6 +44,7 @@
                           <Component id="btnVenda" linkSize="1" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
                           <Component id="btnProdutos" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="btnFuncionarios" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnHistorico" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -64,6 +65,8 @@
               <Component id="btnProdutos" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnFuncionarios" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnHistorico" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="45" max="32767" attributes="0"/>
               <Component id="btnSair" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
@@ -104,6 +107,11 @@
     <Component class="javax.swing.JButton" name="btnFuncionarios">
       <Properties>
         <Property name="text" type="java.lang.String" value="Funcion&#xe1;rios"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnHistorico">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hist&#xf3;rico de Vendas"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnSair">

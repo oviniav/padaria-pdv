@@ -5,7 +5,7 @@
 package br.com.padaria.view;
 
 import br.com.padaria.model.Funcionario;
-import javax.swing.JOptionPane;
+import br.com.padaria.util.Permissao;
 
 /**
  *
@@ -25,16 +25,32 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblBoasVindas.setText("Olá, " + funcionarioLogado.getNome() + " (" + funcionarioLogado.getCargo() + ")");
         setLocationRelativeTo(null);
         
-        btnProdutos.addActionListener(e -> new TelaProdutos().setVisible(true));
+        btnProdutos.addActionListener(e -> new TelaProdutos(funcionarioLogado).setVisible(true));
 
-        btnFuncionarios.addActionListener(e
-                -> JOptionPane.showMessageDialog(this, "Tela de funcionários em construção."));
+        btnFuncionarios.addActionListener(e -> new TelaFuncionarios(funcionarioLogado).setVisible(true));
+
+        btnHistorico.addActionListener(e -> new TelaHistorico().setVisible(true));
+
+        aplicarPermissoes();
 
         btnSair.addActionListener(e -> {
             dispose();
             new TelaLogin().setVisible(true);
         });
 
+    }
+
+    /** Libera só os botões que o cargo do funcionário logado pode usar (Gerente: todos). */
+    private void aplicarPermissoes() {
+        liberar(btnVenda, Permissao.podeVender(funcionarioLogado));
+        liberar(btnProdutos, Permissao.podeEditarProdutos(funcionarioLogado));
+        liberar(btnFuncionarios, Permissao.podeGerenciarFuncionarios(funcionarioLogado));
+        liberar(btnHistorico, Permissao.podeVerHistorico(funcionarioLogado));
+    }
+
+    private void liberar(javax.swing.JButton botao, boolean permitido) {
+        botao.setEnabled(permitido);
+        botao.setToolTipText(permitido ? null : "Sem permissão para o cargo " + funcionarioLogado.getCargo());
     }
 
     /**
@@ -51,6 +67,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnVenda = new javax.swing.JButton();
         btnProdutos = new javax.swing.JButton();
         btnFuncionarios = new javax.swing.JButton();
+        btnHistorico = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,6 +85,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnProdutos.setText("Produtos");
 
         btnFuncionarios.setText("Funcionários");
+
+        btnHistorico.setText("Histórico de Vendas");
 
         btnSair.setText("Sair");
 
@@ -91,11 +110,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnProdutos)
-                            .addComponent(btnFuncionarios))))
+                            .addComponent(btnFuncionarios)
+                            .addComponent(btnHistorico))))
                 .addContainerGap(137, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnFuncionarios, btnProdutos, btnVenda});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnFuncionarios, btnHistorico, btnProdutos, btnVenda});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,6 +130,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(btnProdutos)
                 .addGap(18, 18, 18)
                 .addComponent(btnFuncionarios)
+                .addGap(18, 18, 18)
+                .addComponent(btnHistorico)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(btnSair)
                 .addGap(26, 26, 26))
@@ -150,6 +172,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFuncionarios;
+    private javax.swing.JButton btnHistorico;
     private javax.swing.JButton btnProdutos;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnVenda;

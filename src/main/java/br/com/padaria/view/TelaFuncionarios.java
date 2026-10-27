@@ -6,6 +6,7 @@ package br.com.padaria.view;
 
 import br.com.padaria.dao.FuncionarioDAO;
 import br.com.padaria.model.Funcionario;
+import br.com.padaria.util.Permissao;
 import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -23,6 +24,7 @@ public class TelaFuncionarios extends javax.swing.JFrame {
      * Creates new form TelaFuncionarios
      */
     private final FuncionarioDAO dao = new FuncionarioDAO();
+    private final Funcionario funcionarioLogado; //nao pode excluir a propria conta
     private List<Funcionario> funcionarios = List.of();
     private int idSelecionado = 0; //cadastro de um funcionario novo
     
@@ -33,14 +35,16 @@ public class TelaFuncionarios extends javax.swing.JFrame {
                 return false; //tab so para vizu
             }
      };
-    public TelaFuncionarios() {
+    public TelaFuncionarios(Funcionario funcionarioLogado) {
+        this.funcionarioLogado = funcionarioLogado;
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setTitle("Padaria - Funcionarios");
         setLocationRelativeTo(null);
         
         tblFuncionarios.setModel(modelo);
-        txtSenha.setToolTipText("Ao editar deix a senha em branco para manter senha atual");
+        txtCargo.setToolTipText("Cargos: " + String.join(", ", Permissao.CARGOS));
+        txtSenha.setToolTipText("Ao editar, deixe a senha em branco para manter a senha atual");
         
         tblFuncionarios.getSelectionModel().addListSelectionListener(e->{
             if(!e.getValueIsAdjusting()) {
@@ -104,8 +108,24 @@ public class TelaFuncionarios extends javax.swing.JFrame {
         String senha = new String(txtSenha.getPassword());
         
         if (nome.isEmpty() || cargo.isEmpty() || usuario.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Preencha nom, cargo e usuario.",
-                    "Atençao", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Preencha nome, cargo e usuário.",
+                    "Atenção", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        //o acesso depende do cargo, entao so aceita os cargos conhecidos
+        String cargoOk = Permissao.cargoValido(cargo);
+        if (cargoOk == null) {
+            JOptionPane.showMessageDialog(this, "Cargo inválido. Use um destes: "
+                    + String.join(", ", Permissao.CARGOS) + ".", "Atenção", JOptionPane.WARNING_MESSAGE);
+            txtCargo.requestFocus();
+            return;
+        }
+        cargo = cargoOk;
+        //funcionario novo precisa de senha (na edicao, vazia = mantem a atual)
+        if (idSelecionado == 0 && senha.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Informe a senha do novo funcionário.",
+                    "Atenção", JOptionPane.WARNING_MESSAGE);
+            txtSenha.requestFocus();
             return;
         }
         Funcionario f = new Funcionario(idSelecionado, nome, cargo, txtTelefone.getText().trim(), usuario, senha);
@@ -127,12 +147,17 @@ public class TelaFuncionarios extends javax.swing.JFrame {
     //Exclui funcionario
     private void excluir() {
         if(idSelecionado == 0) {
-            JOptionPane.showMessageDialog(this, "Seleciona um funcionario na tabela");
+            JOptionPane.showMessageDialog(this, "Selecione um funcionário na tabela.");
             return;
         }
-        int resposta = JOptionPane.showConfirmDialog(this, "Excluir o funcionario \"" + txtNome.getText() + "\"?",
-                "Confirmar exclusao", JOptionPane.YES_NO_OPTION);
-        if(resposta != JOptionPane.YES_NO_OPTION) {
+        if (idSelecionado == funcionarioLogado.getId()) {
+            JOptionPane.showMessageDialog(this, "Você não pode excluir o próprio usuário.",
+                    "Atenção", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        int resposta = JOptionPane.showConfirmDialog(this, "Excluir o funcionário \"" + txtNome.getText() + "\"?",
+                "Confirmar exclusão", JOptionPane.YES_NO_OPTION);
+        if(resposta != JOptionPane.YES_OPTION) {
             return;
         }
         try {
@@ -288,11 +313,7 @@ public class TelaFuncionarios extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -306,7 +327,8 @@ public class TelaFuncionarios extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new TelaFuncionarios().setVisible(true));
+        Funcionario teste = new Funcionario(0, "Teste", "Gerente", "", "teste", "");
+        java.awt.EventQueue.invokeLater(() -> new TelaFuncionarios(teste).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

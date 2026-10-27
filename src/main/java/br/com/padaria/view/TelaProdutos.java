@@ -1,8 +1,10 @@
 package br.com.padaria.view;
 
 import br.com.padaria.dao.ProdutoDAO;
+import br.com.padaria.model.Funcionario;
 import br.com.padaria.model.Produto;
 import br.com.padaria.model.UnidadeMedida;
+import br.com.padaria.util.Permissao;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
@@ -33,7 +35,7 @@ public class TelaProdutos extends javax.swing.JFrame {
     /**
      * Creates new form TelaProdutos
      */
-    public TelaProdutos() {
+    public TelaProdutos(Funcionario funcionarioLogado) {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setTitle("Padaria - Produtos");
@@ -52,6 +54,9 @@ public class TelaProdutos extends javax.swing.JFrame {
         // O botão Novo usa o evento criado pelo Design (btnNovoActionPerformed)
         btnSalvar.addActionListener(e -> salvar());
         btnExcluir.addActionListener(e -> excluir());
+
+        // Excluir depende do cargo (ex.: Padeiro edita, mas não exclui)
+        btnExcluir.setEnabled(Permissao.podeExcluirProdutos(funcionarioLogado));
 
         carregarTabela();
     }
@@ -352,7 +357,8 @@ public class TelaProdutos extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new TelaProdutos().setVisible(true));
+        Funcionario teste = new Funcionario(0, "Teste", Permissao.GERENTE, "", "teste", "");
+        java.awt.EventQueue.invokeLater(() -> new TelaProdutos(teste).setVisible(true));
     }
 
     // Variables declaration - do not modify                     
